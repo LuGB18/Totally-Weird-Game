@@ -7,6 +7,8 @@
 # About Section
 
 Totally Weird is a game maked in an Text Based game.
+Focusing in an More RPG and Battleling stlye.
+OBS: Run Over Productions.
 
 # Versions Launched
 
