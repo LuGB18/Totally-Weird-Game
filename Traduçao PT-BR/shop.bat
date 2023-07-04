@@ -13,6 +13,7 @@ set /a goldrestore= %gold%
 set /a MT= 50
 set /a S= 1
 set /a GS= 100
+set /a WS= 20
 cls
 goto shop
 
@@ -29,9 +30,10 @@ echo -                                  -
 echo - A- Espada de Metal - 50 GOLD'S   -
 echo - B- Outro Graveto - 1 GOLD        -
 echo - C- Espada de Ouro - 100 GOLD's   -
+echo - D- Espada de Madeira - 20 GOLD'S -
 echo -                                  -
 echo ------------------------------------
-echo - D- Sair da Loja                  -
+echo - E- Sair da Loja                  -
 echo ------------------------------------
 echo.
 echo.
@@ -40,7 +42,8 @@ cls
 if %op% equ a goto BMS
 if %op% equ b goto BAN
 if %op% equ c goto BGS
-if %op% equ d goto BG
+if %op% equ d goto BWS
+if %op% equ e goto BG
 
 :BMS
 set /a gold= %gold%-%MT%
@@ -100,6 +103,20 @@ set Weapon= Espada de Ouro
 set weaponat= 80
 cls
 echo Voce comprou uma Espada de Ouro!
+echo.
+echo.
+pause>nul
+cls
+goto shop
+
+:BWS
+set /a gold= %gold%-%WS%
+if %gold% leq -1 goto restore
+set /a goldrestore=%gold%
+set Weapon= Wooden Sword
+set weaponat= 50
+cls
+echo You Buyed an Wooden Sword!
 echo.
 echo.
 pause>nul
