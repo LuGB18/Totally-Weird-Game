@@ -14,23 +14,23 @@ goto mainmenu
 echo.
 echo.
 echo.
-echo Loaded Save:%savenm%
+echo Save Carregado:%savenm%
 echo ---------------------------
 echo -   Totally Weird Game    -
-echo -        Main Menu        -
+echo -     Menu Principal      -
 ECHO ---------------------------
 echo -                         -
-echo - 1- Start                -
-echo - 2- Load Save File       -
-echo - 3- Show Save Stats      -
-echo - 4- Continue Save        -
-echo - 5- Exit Game            -
+echo - 1- Comecar              -
+echo - 2- Carregar Save        -
+echo - 3- Ver estatos do Save  -
+echo - 4- Continuar            -
+echo - 5- Sair                 -
 echo -                         -
 echo ---------------------------
 echo.
 echo.
 echo.
-set /p mnop= TYPE THE OPTION: 
+set /p mnop= DIGITE UMA OPCAO: 
 cls
 
 if %mnop% equ 1 goto start 
@@ -38,7 +38,7 @@ if %mnop% equ 2 goto load
 if %mnop% equ 3 goto shst 
 if %mnop% equ 4 goto continue 
 if %mnop% equ 5 goto exit 
-echo ops! looks like you typed wrong!
+echo Ops! Parece que voce digitou Errado!
 pause>nul
 goto mainmenu
 
@@ -47,14 +47,14 @@ exit
 
 :load
 cls
-set /p savenm= type the save file name: 
+set /p savenm= Digite o Nome do Save: 
 if exist %savenm%.sv goto loadsave
-echo sorry but the save name may be incorrect or the save dosent't exist!
+echo Desculpe mas o Nome do save ou o Arquivo Nao Existe!
 echo.
 echo.
 pause
 cls
-set savenm= NONE
+set savenm= Nenhum
 goto mainmenu
 
 :loadsave
@@ -67,7 +67,7 @@ set /p savenm=
 set /p health=
 set /p weaponat=
 )
-echo Loaded!
+echo Save Carregado!
 echo.
 echo.
 pause
@@ -76,15 +76,15 @@ goto mainmenu
 
 :shst
 cls
-echo -Save Stats:---------------------------------------
+echo -Estatos do Save:---------------------------------------
 echo -                                      
-echo - Save File Name: %savenm%             
-echo - Player Name: %playername%            
-echo - Gold: %gold%                         
-echo - Weapon: %weapon%
-echo - Health: %health%                     
+echo - Nome do Save: %savenm%             
+echo - Nome do Player: %playername%            
+echo - Gold's: %gold%                         
+echo - Arma: %weapon%
+echo - Vida: %health%                     
 echo -                                      
-echo ---------------------------------------------------
+echo --------------------------------------------------------
 echo.
 echo.
 echo.
@@ -93,38 +93,38 @@ cls
 goto mainmenu 
 
 :start
-echo Lets start puting an Name on the save.
+echo Vamos Comecar colocando o Nome do Save.
 echo.
-set /p savenm= type the name of the save: 
+set /p savenm= Digite o Nome do Save: 
 cls
-echo Now lets create our Character's Name!
+echo Agora vamos Criar o Nome do Player!
 echo.
-set /p playername= Type the Character's name: 
+set /p playername= Digite o Nome do Player: 
 cls
 set gold= 0
-set weapon= Stick
+set weapon= Graveto
 (
 echo %gold%
 echo %weapon%
 echo %playername%
 )> %savenm%.sv
 cls
-echo Save Created!
+echo Save Criado!
 echo.
 pause
 cls
 goto continue
 
 :continue
-echo -GAME------------------------
-echo - 1- Find an Battle         -
-echo - 2- Go to shop             -
+echo -JOGO------------------------
+echo - 1- Achar uma Batalha      -
+echo - 2- Ir para a Loja         -
 echo -----------------------------
-echo - 3- Main Menu              -
+echo - 3- Menu Principal         -
 echo -----------------------------
 echo.
 echo.
-set /p op= type the option: 
+set /p op= Digite uma das opcoes: 
 cls
 
 if %op% equ 1 goto fbattle
@@ -159,15 +159,15 @@ goto battle
 set /a enattack=%random% %%40
 set /a btweaponat=%random% %%%weaponat%
 cls
-echo Enemy's Health: %enhelth%
-echo Your's Health: %health%
+echo Vida do Enimigo: %enhelth%
+echo Sua Vida: %health%
 echo -------------------------
-echo -      1- Attack!       -
-echo -      2- Run Away!     -
+echo -      1- Atacar!       -
+echo -      2- Fugir!        -
 echo -------------------------
 echo.
 echo.
-set /p btop= Type an Option: 
+set /p btop= Digite uma das Opcoes: 
 cls
 
 if %btop% equ 1 goto attack
@@ -178,8 +178,8 @@ if %btop% equ 2 goto coward
 set /a health= %health%-%enattack%
 set /a enhellth= %enhelth%-%btweaponat%
 cls
-echo With your %weapon% you removed %btweaponat% from the enemy's Health!
-echo The Enemy removed %enattack% from your health!
+echo Com Sua %weapon% Voce removeu %btweaponat% da vida do seu Enimigo!
+echo O Enimigo removeu %enattack% da sua Vida!
 echo.
 echo.
 pause>nul
@@ -190,7 +190,7 @@ cls
 goto battle
 
 :winbt
-echo You Defeated the Enemy, and you winned %engold% gold's!
+echo Voce Derrotou o Enimigo, e voce ganhou %engold% de GOLD's!
 echo.
 echo.
 pause
@@ -208,7 +208,7 @@ echo %weaponat%
 goto continue
 
 :coward
-echo you ran away like an coward, and the enemy lauthed at you!
+echo Voce Fugio como um Otario eo Enimigo Rio de Voce!
 echo.
 echo.
 pause
@@ -228,7 +228,7 @@ goto continue
 set /a logold=%random% %%20
 echo.
 echo.
-echo You Died! you lost %logold% GOLD's.
+echo Voce Morreu! Voce Perdeu %logold% de GOLD's.
 echo.
 echo.
 echo.

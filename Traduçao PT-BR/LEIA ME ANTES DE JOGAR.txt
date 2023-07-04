@@ -1,0 +1,9 @@
+Tradução de Totally Weird Game PT-BR 
+
+- Para utilizar a Tradução jogue todos os arquivos na pasta raiz do jogo
+
+- Partes Atualizadas para PT-BR
+
+:Parte da Batalha
+:Loja
+:Menu Principal

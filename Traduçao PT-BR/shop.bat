@@ -17,21 +17,21 @@ cls
 goto shop
 
 :shop
-echo -Save File Name: %savenm%
-echo -Player Name: %playername%
+echo -Nome do Save: %savenm%
+echo -Nome do Player: %playername%
 echo -Gold's: %gold%
-echo -Weapon: %weapon%
-echo -Weapon Damage: %weaponat%
+echo -Arma: %weapon%
+echo -Dano da Arma: %weaponat%
 echo ------------------------------------
-echo -         Weapon shop              -
+echo -         Loja de Armas            -
 echo ------------------------------------
 echo -                                  -
-echo - A- Metal Sword - 50 GOLD'S       -
-echo - B- Another Stick - 1 GOLD        -
-echo - C- Gold Sword - 100 GOLD's       -
+echo - A- Espada de Metal - 50 GOLD'S   -
+echo - B- Outro Graveto - 1 GOLD        -
+echo - C- Espada de Ouro - 100 GOLD's   -
 echo -                                  -
 echo ------------------------------------
-echo - D- Get out of the shop           -
+echo - D- Sair da Loja                  -
 echo ------------------------------------
 echo.
 echo.
@@ -46,10 +46,10 @@ if %op% equ d goto BG
 set /a gold= %gold%-%MT%
 if %gold% leq -1 goto restore
 set /a goldrestore= %gold%
-set weapon= Metal Sword
+set weapon= Espada de Metal
 set weaponat= 60
 cls
-echo You Buyed an Metal Sword!
+echo Voce Comprou uma Espada de Metal!
 echo.
 pause
 cls
@@ -62,7 +62,7 @@ set /a goldrestore= %gold%
 set weapon= Double Stick'S
 set /a weaponat= 40
 cls
-echo You Buyed Another Stick!!
+echo Voce comprou Outro Graveto!
 echo.
 pause
 cls
@@ -72,7 +72,7 @@ goto shop
 set /a gold= 0
 set /a gold= %goldrestore%
 cls
-echo Oh no! you dont have suficient GOLD'S to buy the weapon!
+echo Ai nao! Parece que Voce nao tem GOLD'S o suficiente para comprar a arma!
 echo.
 pause>nul
 goto shop
@@ -96,10 +96,10 @@ exit
 set /a gold= %gold%-%GS%
 if %gold% leq -1 goto restore
 set /a goldrestore=%gold%
-set Weapon= Gold Sword
+set Weapon= Espada de Ouro
 set weaponat= 80
 cls
-echo You Buyed an Gold Sword!
+echo Voce comprou uma Espada de Ouro!
 echo.
 echo.
 pause>nul
