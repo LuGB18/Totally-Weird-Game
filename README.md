@@ -10,6 +10,7 @@ Totally Weird is a game maked in an Text Based game.
 
 # Versions Launched
 
-| Versions | Development | Patch Launched |
-|----------|-------------|----------------|
-|   V1.0   |             |                |
+| Versions | Development | Patch Launched |Traduction|
+|----------|-------------|----------------|----------|
+|   V2.0   |             |                |          |
+|   V1.0   |    :x:      |                |          |
