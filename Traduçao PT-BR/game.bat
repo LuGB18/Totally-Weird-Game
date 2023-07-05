@@ -1,5 +1,5 @@
 @echo off
-title Totally Weird Game V2.0
+title Totally Weird Game V2.5
 color a
 set /a gold= 0
 set  weapon= Stick
@@ -176,9 +176,9 @@ if %btop% equ 2 goto coward
 
 :attack
 set /a health= %health%-%enattack%
-set /a enhellth= %enhelth%-%btweaponat%
+set /a enhelth= %enhelth%-%btweaponat%
 cls
-echo Com Sua %weapon% Voce removeu %btweaponat% da vida do seu Enimigo!
+echo Com sua %weapon% voce removeu %btweaponat% da vida do seu Enimigo!
 echo O Enimigo removeu %enattack% da sua Vida!
 echo.
 echo.
@@ -197,6 +197,7 @@ pause
 cls
 set /a upgold= %engold%+%gold%
 set /a gold=%upgold%
+set /a health= 100
 (
 echo %gold%
 echo %weapon%

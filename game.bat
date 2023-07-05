@@ -1,5 +1,5 @@
 @echo off
-title Totally Weird Game V2.0
+title Totally Weird Game V2.5
 color a
 set /a gold= 0
 set  weapon= Stick
@@ -176,7 +176,7 @@ if %btop% equ 2 goto coward
 
 :attack
 set /a health= %health%-%enattack%
-set /a enhellth= %enhelth%-%btweaponat%
+set /a enhelth= %enhelth%-%btweaponat%
 cls
 echo With your %weapon% you removed %btweaponat% from the enemy's Health!
 echo The Enemy removed %enattack% from your health!
