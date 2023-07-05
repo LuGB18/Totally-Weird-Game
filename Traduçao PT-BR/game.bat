@@ -179,12 +179,12 @@ set /a health= %health%-%enattack%
 set /a enhelth= %enhelth%-%btweaponat%
 cls
 echo Com sua %weapon% voce removeu %btweaponat% da vida do seu Enimigo!
-echo O Enimigo removeu %enattack% da sua Vida!
+echo o Enimigo removeu %enattack% da sua Vida!
 echo.
 echo.
-pause>nul
+pause
 cls
-if %enhellth% leq 0 goto winbt
+if %enhelth% leq 0 goto winbt
 if %health% leq 0 goto btlose
 cls
 goto battle

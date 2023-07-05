@@ -184,7 +184,7 @@ echo.
 echo.
 pause>nul
 cls
-if %enhellth% leq 0 goto winbt
+if %enhelth% leq 0 goto winbt
 if %health% leq 0 goto btlose
 cls
 goto battle
