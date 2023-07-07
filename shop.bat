@@ -8,42 +8,47 @@ set /p playername=
 set /p savenm=
 set /p health=
 set /p weaponat=
+set /p potion=
 )
 set /a goldrestore= %gold%
 set /a MT= 50
 set /a S= 1
 set /a GS= 100
 set /a WS= 20
+set /a P= 10
 cls
 goto shop
 
 :shop
-echo -Save File Name: %savenm%
-echo -Player Name: %playername%
+echo -Name of the Save: %savenm%
+echo -Name of the Character: %playername%
 echo -Gold's: %gold%
 echo -Weapon: %weapon%
-echo -Weapon Damage: %weaponat%
+echo -Damage of the Weapon: %weaponat%
+echo -Number of Potions: %potion%
 echo ------------------------------------
-echo -         Weapon shop              -
+echo -         Shop of Items            -
 echo ------------------------------------
 echo -                                  -
-echo - A- Metal Sword - 50 GOLD'S       -
-echo - B- Another Stick - 1 GOLD        -
-echo - C- Gold Sword - 100 GOLD's       -
-echo - D- Wooden Sword - 20 GOLD'S      -
+echo - A- Metal Sword - 50 GOLD'S   -
+echo - B- Other Stick - 1 GOLD        -
+echo - C- Gold Sword - 100 GOLD's   -
+echo - D- Wooden Sword - 20 GOLD'S -
+echo - E- Buy an Potion - 10 GOLD'S     -
 echo -                                  -
 echo ------------------------------------
-echo - E- Get out of the shop           -
+echo - F- Exit the Shop                 -
 echo ------------------------------------
 echo.
 echo.
-set /p op= Digite uma das opcoes: 
+set /p op= Type one of the options: 
 cls
 if %op% equ a goto BMS
 if %op% equ b goto BAN
 if %op% equ c goto BGS
 if %op% equ d goto BWS
-if %op% equ e goto BG
+if %op% equ e goto BP
+if %op% equ f goto BG
 
 :BMS
 set /a gold= %gold%-%MT%
@@ -65,7 +70,7 @@ set /a goldrestore= %gold%
 set weapon= Double Stick'S
 set /a weaponat= 40
 cls
-echo You Buyed Another Stick!!
+echo You Buyed Another Stick!
 echo.
 pause
 cls
@@ -75,7 +80,7 @@ goto shop
 set /a gold= 0
 set /a gold= %goldrestore%
 cls
-echo Oh no! you dont have suficient GOLD'S to buy the weapon!
+echo Oh no! Looks like you dont have that many GOLD'S to Buy This Item!
 echo.
 pause>nul
 goto shop
@@ -88,6 +93,7 @@ echo %playername%
 echo %savenm%
 echo %health%
 echo %weaponat%
+echo %potion%
 )> %savenm%.sv
 del /s /q shop.sv
 cls
@@ -99,10 +105,10 @@ exit
 set /a gold= %gold%-%GS%
 if %gold% leq -1 goto restore
 set /a goldrestore=%gold%
-set Weapon= Gold Sword
+set weapon= Golden Sword
 set weaponat= 80
 cls
-echo You Buyed an Gold Sword!
+echo You Buyed an Golden Sword!
 echo.
 echo.
 pause>nul
@@ -113,12 +119,33 @@ goto shop
 set /a gold= %gold%-%WS%
 if %gold% leq -1 goto restore
 set /a goldrestore=%gold%
-set Weapon= Wooden Sword
+set weapon= Wooden Sword
 set weaponat= 50
 cls
 echo You Buyed an Wooden Sword!
 echo.
 echo.
+pause>nul
+cls
+goto shop
+
+:BP
+if %potion% == 1 goto maxpotion
+set /a gold= %gold%-%p%
+if %gold% leq -1 goto restore
+set /a goldrestore=%gold%
+set potion= 1
+cls
+echo You Buyed an Potion!
+echo.
+echo.
+pause>nul
+cls
+goto shop
+
+:maxpotion
+cls
+echo Max Potions Reached!
 pause>nul
 cls
 goto shop

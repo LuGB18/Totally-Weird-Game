@@ -1,5 +1,5 @@
 @echo off
-title Totally Weird Game V2.5
+title Totally Weird Game V3.0
 color a
 set /a gold= 0
 set  weapon= Stick
@@ -7,6 +7,7 @@ set  /a weaponat= 20
 set  playername= NONE 
 set  savenm= NONE
 set /a health= 100
+set /a potion= 0
 cls
 goto mainmenu
 
@@ -66,6 +67,7 @@ set /p playername=
 set /p savenm=
 set /p health=
 set /p weaponat=
+set /p potion=
 )
 echo Save Carregado!
 echo.
@@ -82,7 +84,8 @@ echo - Nome do Save: %savenm%
 echo - Nome do Player: %playername%            
 echo - Gold's: %gold%                         
 echo - Arma: %weapon%
-echo - Vida: %health%                     
+echo - Vida: %health%
+echo - Numero de Pocoes: %potion%                     
 echo -                                      
 echo --------------------------------------------------------
 echo.
@@ -98,15 +101,22 @@ echo.
 set /p savenm= Digite o Nome do Save: 
 cls
 echo Agora vamos Criar o Nome do Player!
-echo.
+echo. 
 set /p playername= Digite o Nome do Player: 
 cls
 set gold= 0
 set weapon= Graveto
+set /a weaponat= 20
+set /a potion= 0
+cls
 (
 echo %gold%
 echo %weapon%
 echo %playername%
+echo %savenm%
+echo %health%
+echo %weaponat%
+echo %potion%
 )> %savenm%.sv
 cls
 echo Save Criado!
@@ -139,14 +149,16 @@ echo %playername%
 echo %savenm%
 echo %health%
 echo %weaponat%
+echo %potion%
 )> shop.sv
 start shop.bat
 cls
 exit
 
 :fbattle
-set /a ch= 1
+set /a ch=%random% %%2
 if %ch% equ 1 goto btsettings
+if %ch% equ 2 goto bsbtsettings
 cls
 
 :btsettings
@@ -155,31 +167,96 @@ set /a engold= %random% %%45
 cls
 goto battle
 
+:bsbtsettings
+cls
+set /a bsheallth= 200
+set /a bsgold= %random% %%100
+cls
+goto bsbattle
+
+:bsbattle
+set /a boption= 0
+set /a bsattack=%random% %%70
+set /a btweaponat=%random% %%%weaponat%
+cls
+echo Vida do Boss: %bsheallth%
+echo Sua Vida: %health%
+echo --------------------------
+echo -      1- Atacar         -
+echo -      2- Fugir          -
+echo -      3- Usar Pocao     -
+echo --------------------------
+echo.
+echo.
+set /p bsbtop=Digite uma OPCAO: 
+cls
+
+if %bsbtop% == 1 goto bsatack
+if %bsbtop% == 2 goto coward
+if %bsbtop% == 3 goto askpotion
+
+:askpotion
+if %potion% == 1 goto usepotion
+else (
+    echo Oh oh! Voce nao tem Pocoes!
+pause>nul
+cls
+if %boption% == 1 goto battle
+if %boption% == 0 goto bsbattle
+
+)
+
+:usepotion
+set /a uspotion= 30
+set /a potion= 0
+set /a health= %health%+%uspotion%
+cls
+if %boption% == 1 goto battle
+if %boption% == 0 goto bsbattle
+
+:bsatack
+set /a health= %health%-%bsattack%
+set /a bshealth= %bsheallth%-%btweaponat%
+cls
+echo Com sua %weapon% voce removeu %btweaponat% da vida do Boss!
+echo o Boss removeu %bsattack% da sua Vida!
+echo.
+echo.
+pause
+cls
+if %bsheallth% leq 0 goto winbt
+if %health% leq 0 goto btlose
+cls
+goto bsbattle
+
+
 :battle
+set /a boption = 1
 set /a enattack=%random% %%40
 set /a btweaponat=%random% %%%weaponat%
 cls
-echo Vida do Enimigo: %enhelth%
+echo Vida do Inimigo: %enhelth%
 echo Sua Vida: %health%
 echo -------------------------
 echo -      1- Atacar!       -
 echo -      2- Fugir!        -
+echo -      3- Usar Pocao    -
 echo -------------------------
 echo.
 echo.
 set /p btop= Digite uma das Opcoes: 
 cls
 
-if %btop% equ 1 goto attack
-if %btop% equ 2 goto coward
-
+if %btop% == 1 goto attack
+if %btop% == 2 goto coward
+if %btop% == 3 goto askpotion
 
 :attack
 set /a health= %health%-%enattack%
 set /a enhelth= %enhelth%-%btweaponat%
 cls
-echo Com sua %weapon% voce removeu %btweaponat% da vida do seu Enimigo!
-echo o Enimigo removeu %enattack% da sua Vida!
+echo Com sua %weapon% voce removeu %btweaponat% da vida do seu Inimigo!
+echo o Inimigo removeu %enattack% da sua Vida!
 echo.
 echo.
 pause
@@ -190,7 +267,7 @@ cls
 goto battle
 
 :winbt
-echo Voce Derrotou o Enimigo, e voce ganhou %engold% de GOLD's!
+echo Voce o Derrotou!, e voce ganhou %engold% de GOLD's!
 echo.
 echo.
 pause
@@ -205,11 +282,12 @@ echo %playername%
 echo %savenm%
 echo %health%
 echo %weaponat%
+echo %potion%
 )> %savenm%.sv
 goto continue
 
 :coward
-echo Voce Fugio como um Otario eo Enimigo Rio de Voce!
+echo Voce Fugiu como um Otario!
 echo.
 echo.
 pause
@@ -220,8 +298,9 @@ echo %gold%
 echo %weapon%
 echo %playername%
 echo %savenm%
-echo %weaponat%
 echo %health%
+echo %weaponat%
+echo %potion%
 )> %savenm%.sv
 goto continue
 
@@ -242,6 +321,7 @@ echo %playername%
 echo %savenm%
 echo %health%
 echo %weaponat%
+echo %potion%
 )> %savenm%.sv
 cls
 goto continue
