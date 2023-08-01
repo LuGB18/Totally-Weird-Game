@@ -126,6 +126,10 @@ cls
 goto continue
 
 :continue
+if %savenm% == NONE (
+    goto mainmenu
+)
+cls
 echo -Game------------------------
 echo - 1- Find an Battle         -
 echo - 2- Go to the Item Shop    -

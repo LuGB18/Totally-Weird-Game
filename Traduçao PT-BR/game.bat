@@ -126,6 +126,10 @@ cls
 goto continue
 
 :continue
+if %savenm% == NONE (
+    goto mainmenu
+)
+cls
 echo -JOGO------------------------
 echo - 1- Achar uma Batalha      -
 echo - 2- Ir para a Loja         -
