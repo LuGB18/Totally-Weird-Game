@@ -1,8 +1,7 @@
 # Totally Weird Game
-    Totally Weird Game NOW IS IN BETA! (VERSION 2.0)
-    AND IT STILL IN DEVELOPMENT, AND HAVING BUG FIXES.    
-
- OBS:This game is an Beta of an little Project im Making
+Hi... This project gone Abandoned ok?... 
+well scholl is taking a lot of time so yeah,
+i dont have any more time to update things so yeah..
 
 # About Section
 
